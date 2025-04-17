@@ -1,0 +1,30 @@
+
+<html>
+<head>
+  <title>URL Shortener</title>
+</head>
+<body>
+  <h1>URL Shortener</h1>
+  <form id="shorten-form">
+    <input type="text" id="long-url" placeholder="Enter long URL" required>
+    <button type="submit">Shorten</button>
+  </form>
+  <p id="result"></p>
+
+  <script>
+    const apiEndpoint = "https://YOUR_API_ID.execute-api.us-east-1.amazonaws.com/prod/create";
+
+    document.getElementById('shorten-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const longUrl = document.getElementById('long-url').value;
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ long_url: longUrl })
+      });
+      const data = await response.json();
+      document.getElementById('result').innerHTML = `Short URL: <a href="https://YOUR_API_ID.execute-api.us-east-1.amazonaws.com/prod/${data.short_url}" target="_blank">${data.short_url}</a>`;
+    });
+  </script>
+</body>
+</html>
