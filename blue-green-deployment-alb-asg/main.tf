@@ -1,3 +1,21 @@
+/*
+# High-Availability Web Server Infrastructure on AWS
+
+This Terraform configuration sets up a highly available and scalable web server infrastructure on AWS using the following components:
+
+- **Amazon EC2**: Based on the latest Amazon Linux 2 AMI.
+- **Auto Scaling Group (ASG)**: Ensures high availability across two availability zones.
+- **Application Load Balancer (ALB)**: Distributes incoming traffic evenly.
+- **Launch Template**: Automatically provisions EC2 instances with user data.
+- **Security Groups**: Controls inbound and outbound traffic.
+- **Default VPC and Subnets**: Utilizes AWS-managed default networking for simplicity.
+
+Author: Azizbek Imamkulov  
+Created with: Terraform
+Region: `us-east-1`
+*/
+
+#-----------------------------------------------------------------
 provider "aws" {
   region = "us-east-1"
 
